@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TransChat</title>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <script src="/message/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script> 
+    <link rel="stylesheet" href="../../css/chat/stylesheet.css">
+    <link href="https://fonts.googleapis.com/css?family=Kosugi&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="language_select">
+        <div id="scroll">
+            <div class="select">
+                <div class="selection"><p><span id="show_lang">Select language</span><i></i></p><span></span></div>
+                <div class="lang" data-lang="af"><p>Afrikaans</p></div>
+                <div class="lang" data-lang="sq"><p>Shqip</p></div>
+                <div class="lang" data-lang="am"><p>አማርኛ</p></div>
+                <div class="lang" data-lang="ar"><p>اللغة العربية</p></div>
+                <div class="lang" data-lang="hy"><p>Հայերեն</p></div>
+                <div class="lang" data-lang="az"><p>Azərbaycanca</p></div>
+                <div class="lang" data-lang="eu"><p>Euskara</p></div>
+                <div class="lang" data-lang="be"><p>Беларуская мова</p></div>
+                <div class="lang" data-lang="bn"><p>বাংলা</p></div>
+                <div class="lang" data-lang="bs"><p>Bosanski</p></div>
+                <div class="lang" data-lang="bg"><p>български език</p></div>
+                <div class="lang" data-lang="ca"><p>Català</p></div>
+                <div class="lang" data-lang="ceb"><p>Sinugboanon</p></div>
+                <div class="lang" data-lang="ny"><p>Chicheŵa</p></div>
+                <div class="lang" data-lang="zh-cn"><p>简体中文</p></div>
+                <div class="lang" data-lang="zh-tw"><p>繁體中文</p></div>
+                <div class="lang" data-lang="co"><p>Corsu</p></div>
+                <div class="lang" data-lang="hr"><p>Hrvatski</p></div>
+                <div class="lang" data-lang="cs"><p>čeština</p></div>
+                <div class="lang" data-lang="da"><p>dansk</p></div>
+                <div class="lang" data-lang="nl"><p>Nederlands</p></div>
+                <div class="lang" data-lang="en"><p>English</p></div>
+                <div class="lang" data-lang="eo"><p>Esperanto</p></div>
+                <div class="lang" data-lang="et"><p>eesti keel</p></div>
+                <div class="lang" data-lang="tl"><p>Tagalog</p></div>
+                <div class="lang" data-lang="fi"><p>Suomen kieli</p></div>
+                <div class="lang" data-lang="fr"><p>français</p></div>
+                <div class="lang" data-lang="fy"><p>Frysk</p></div>
+                <div class="lang" data-lang="gl"><p>Língua galega</p></div>
+                <div class="lang" data-lang="ka"><p>ქართული ენა</p></div>
+                <div class="lang" data-lang="de"><p>Deutsch</p></div>
+                <div class="lang" data-lang="el"><p>ελληνικά</p></div>
+                <div class="lang" data-lang="gu"><p>ગુજરાતી</p></div>
+                <div class="lang" data-lang="ht"><p>Kreyòl ayisyen</p></div>
+                <div class="lang" data-lang="ha"><p>هَوُسَ</p></div>
+                <div class="lang" data-lang="haw"><p>ʻŌlelo Hawaiʻi</p></div>
+                <div class="lang" data-lang="iw"><p>עברית</p></div>
+                <div class="lang" data-lang="hi"><p>हिंदी</p></div>
+                <div class="lang" data-lang="hmn"><p>Hmoob</p></div>
+                <div class="lang" data-lang="hu"><p>magyar nyelv</p></div>
+                <div class="lang" data-lang="is"><p>íslenska</p></div>
+                <div class="lang" data-lang="ig"><p>Asụsụ Igbo</p></div>
+                <div class="lang" data-lang="id"><p>Bahasa Indonesia</p></div>
+                <div class="lang" data-lang="ga"><p>Gaeilge</p></div>
+                <div class="lang" data-lang="it"><p>Italiano</p></div>
+                <div class="lang" data-lang="ja"><p>日本語</p></div>
+                <div class="lang" data-lang="jw"><p>Bahasa Jawa</p></div>
+                <div class="lang" data-lang="kn"><p>ಕನ್ನಡ</p></div>
+                <div class="lang" data-lang="kk"><p>Қазақ</p></div>
+                <div class="lang" data-lang="km"><p>ចក្រភពខ្មែរ</p></div>
+                <div class="lang" data-lang="ko"><p>한국어</p></div>
+                <div class="lang" data-lang="ku"><p>Kurmancî</p></div>
+                <div class="lang" data-lang="ky"><p>кыргыз</p></div>
+                <div class="lang" data-lang="lo"><p>ພາສາລາວ</p></div>
+                <div class="lang" data-lang="la"><p>lingua latina</p></div>
+                <div class="lang" data-lang="lv"><p>latviešu valoda</p></div>
+                <div class="lang" data-lang="lt"><p>lietuvių kalba</p></div>
+                <div class="lang" data-lang="lb"><p>Lëtzebuergesch</p></div>
+                <div class="lang" data-lang="mk"><p>Македонски</p></div>
+                <div class="lang" data-lang="mg"><p>Malagasy</p></div>
+                <div class="lang" data-lang="ms"><p>Bahasa Melayu</p></div>
+                <div class="lang" data-lang="ml"><p>മലയാളം</p></div>
+                <div class="lang" data-lang="mt"><p>Malti</p></div>
+                <div class="lang" data-lang="mi"><p>Te reo Māori</p></div>
+                <div class="lang" data-lang="mr"><p>मराठी</p></div>
+                <div class="lang" data-lang="mn"><p>Монгол хэл</p></div>
+                <div class="lang" data-lang="my"><p>မြန်မာဘာသာ</p></div>
+                <div class="lang" data-lang="ne"><p>नेपाली भाषा</p></div>
+                <div class="lang" data-lang="no"><p>norsk</p></div>
+                <div class="lang" data-lang="ps"><p>paʂto</p></div>
+                <div class="lang" data-lang="fa"><p>فارسی‌‎</p></div>
+                <div class="lang" data-lang="pl"><p>język</p></div>
+                <div class="lang" data-lang="pt"><p>português</p></div>
+                <div class="lang" data-lang="pa"><p>ਪੰਜਾਬੀ</p></div>
+                <div class="lang" data-lang="ro"><p>limba română</p></div>
+                <div class="lang" data-lang="ru"><p>русский язык</p></div>
+                <div class="lang" data-lang="sm"><p>Gagana fa'a Sāmoa</p></div>
+                <div class="lang" data-lang="gd"><p>Gàidhlig na h-Alba</p></div>
+                <div class="lang" data-lang="sr"><p>српски језик</p></div>
+                <div class="lang" data-lang="st"><p>Sesotho</p></div>
+                <div class="lang" data-lang="sn"><p>chiShona</p></div>
+                <div class="lang" data-lang="sd"><p>سنڌي</p></div>
+                <div class="lang" data-lang="si"><p>සිංහල</p></div>
+                <div class="lang" data-lang="sk"><p>Slovenčina</p></div>
+                <div class="lang" data-lang="sl"><p>slovenščina</p></div>
+                <div class="lang" data-lang="so"><p>Af Soomaali</p></div>
+                <div class="lang" data-lang="es"><p>Castilian</p></div>
+                <div class="lang" data-lang="su"><p>Basa Sunda</p></div>
+                <div class="lang" data-lang="sw"><p>Kiswahili</p></div>
+                <div class="lang" data-lang="sv"><p>svenska</p></div>
+                <div class="lang" data-lang="tg"><p>тоҷикӣ</p></div>
+                <div class="lang" data-lang="ta"><p>தமிழ்</p></div>
+                <div class="lang" data-lang="te"><p>తెలుగు</p></div>
+                <div class="lang" data-lang="th"><p>ภาษาไทย</p></div>
+                <div class="lang" data-lang="tr"><p>Türkçe</p></div>
+                <div class="lang" data-lang="uk"><p>Українська мова</p></div>
+                <div class="lang" data-lang="ur"><p>اردو</p></div>
+                <div class="lang" data-lang="uz"><p>Oʻzbek tili</p></div>
+                <div class="lang" data-lang="vi"><p>Tiếng Việt</p></div>
+                <div class="lang" data-lang="cy"><p>Cymraeg</p></div>
+                <div class="lang" data-lang="xh"><p>isiXhosa</p></div>
+                <div class="lang" data-lang="yi"><p>ייִדיש‎</p></div>
+                <div class="lang" data-lang="yo"><p>èdè Yorùbá</p></div>
+                <div class="lang" data-lang="zu"><p>isiZulu</p></div>
+                <div class="lang" data-lang="fil"><p>Wikang Filipino</p></div>
+                <div class="lang" lang_select="he"><p>עברית</p></div>
+            </div>
+            <div id="lang_check">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560.35 561.5" id="lang_check_svg">
+                    <path d="M327.64,30.07Q428.26,132.13,529.36,233.7c11.53,11.6,19.57,24.56,17.85,41.47-1.83,18.08-11.15,31.32-28.21,38.17-17.41,7-33.89,4.78-47.36-8.61q-66.48-66-132.27-132.79c-.25-.26-.53-.53-.83-.82a6.16,6.16,0,0,0-10.44,4.42v1.05q0,166.74,0,333.49c0,26.25-12.15,43.34-34.43,49.14A45.31,45.31,0,0,1,237,519.87c-.5-5-.36-10.16-.36-15.24q0-164.56,0-329.13v0a6.15,6.15,0,0,0-10.51-4.33h0Q162.24,236,98,300.37c-20.06,20.05-45,22-64.29,5.8a45.15,45.15,0,0,1-8.14-60.85A99.17,99.17,0,0,1,36.24,233Q136.67,131.54,237.1,30.08c12.59-12.77,25.18-27.95,44.37-27.93.6,0,1.2,0,1.8,0C302.57,2.63,315.05,17.3,327.64,30.07Z" transform="translate(-3.29 -2.14)"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <div id="join_user">
+        <div id="join_user_content">
+          <p id="join_user_description">Scan QRcode and join translatechat</p>
+          <div id="qrcode"></div>
+        </div>
+    </div>
+
+    <div id="main_content">
+      <ol id="messages_list" reversed>
+          <li id="sys_hello">Hello! from System</li>
+      </ol>
+      <form id="form">
+          <input id="message_send" autocomplete="off" placeholder="Say Hello!!"><button><img id="button_img" src="../../img/button.svg"></button>
+      </form>
+    </div>
+    <script src="../../js/chat/main.js"></script>
+</body>
+</html>
