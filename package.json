@@ -1,7 +1,21 @@
 {
-  "name": "translate chat",
-  "version": "1.0",
+  "name": "transchat",
+  "version": "1.0.0",
   "description": "translate chat",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lra21711214/transchat.git"
+  },
+  "author": "Leo Sato",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lra21711214/transchat/issues"
+  },
+  "homepage": "https://github.com/lra21711214/transchat#readme",
   "dependencies": {
     "ejs": "^3.1.5",
     "express": "^4.17.1",
